@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.event.FMLInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import xyz.lilithmod.lilithplus.config.LilithPlusConfig
+import io.sentry.Sentry
 import java.io.File
 
 @Mod(
@@ -38,5 +39,12 @@ object LilithPlus {
                 LilithPlusConfig.openScreen()
             }
         }
+        Sentry.init { options ->
+            options.dsn = "https://133b8f49ee7743dcb713dcb6f7cf48d7@o998490.ingest.sentry.io/5957324"
+            options.tracesSampleRate = 1.0
+            options.release = "lilithplus@${VER}"
+            options.environment = "dev"
+        }
+        Sentry.setTag("OS", System.getProperty("os.name"))
     }
 }

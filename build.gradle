@@ -63,6 +63,8 @@ dependencies {
     include ('cc.woverflow:onecore-tweaker:1.4.2') {
         transitive = false
     }
+    include('io.sentry:sentry:5.7.3')
+    include('org.java-websocket:Java-WebSocket:1.5.3')
     compileOnly ('org.spongepowered:mixin:0.8.5-SNAPSHOT')
 }
 
@@ -75,7 +77,7 @@ processResources {
         expand(
                 "id": mod_id,
                 "name": mod_name,
-                "versions": version
+                "version": version
         )
     }
     filesMatching("mixins.${mod_id}.json") {
